@@ -32,3 +32,11 @@
 #landing img{
     width: 300px;
 }
+.fixed-bottom {
+    background: #364652;
+    color: white;
+    font-size: 14pt;
+}
+#sign-up {
+    background: #D5ACA9;
+}
