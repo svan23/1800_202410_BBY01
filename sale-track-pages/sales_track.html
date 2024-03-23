@@ -34,143 +34,42 @@
     </div>
 
     <div class="container">
-
-        <div class="row my-4">
-
-            <div class="col-4">
-                <div class="card bg-white border-success shadow p-3 rounded">
-                    <div class="card-body">
-                        <div class="card-text text-center">
-                            Item #1
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="card bg-white border-success shadow p-3 rounded">
-                    <div class="card-body">
-                        <div class="card-text text-center">
-                            Item #2
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="card bg-white border-success shadow p-3 rounded">
-                    <div class="card-body">
-                        <div class="card-text text-center">
-                            Item #3
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <!-- Here is the container for cards  -->
+        <div class="container">
+            <div id="mock-sales-go-here" class="row row-cols-auto"></div>
         </div>
-
-        <div class="row my-4">
-
-            <div class="col-4">
-                <div class="card bg-white border-success shadow p-3 rounded">
-                    <div class="card-body">
-                        <div class="card-text text-center">
-                            Item #4
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="card bg-white border-success shadow p-3 rounded">
-                    <div class="card-body">
-                        <div class="card-text text-center">
-                            Item #5
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="card bg-white border-success shadow p-3 rounded">
-                    <div class="card-body">
-                        <div class="card-text text-center">
-                            Item #6
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row my-4">
-
-            <div class="col-4">
-                <div class="card bg-white border-success shadow p-3 rounded">
-                    <div class="card-body">
-                        <div class="card-text text-center">
-                            Item #7
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="card bg-white border-success shadow p-3 rounded">
-                    <div class="card-body">
-                        <div class="card-text text-center">
-                            Item #8
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="card bg-white border-success shadow p-3 rounded">
-                    <div class="card-body">
-                        <div class="card-text text-center">
-                            Item #9
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row my-4">
-
-            <div class="col-4">
-                <div id="addition" class="card">
-                    <button type="button" class="btn btn-outline-success shadow"><i
-                            class="fa-solid fa-plus fa-5x"></i></button>
-                </div>
-            </div>
-        </div>
+    </div>
 
         <!--Bottom Navbar-->
 
-        <nav
-            class="d-flex bg-secondary fixed-bottom py-0.5 bg-secondary-subtle justify-content-around align-items-center mt-3">
-            <div>
-                <img src="../assets/inventory.svg" width="45px" />
+        <div id="navbarPlaceholder"></div>
+
+        <!--Template for Cards-->
+
+        <!-- Templates for general use, not displayed -->
+        <template id="saleCardTemplate">
+            <div class="d-flex justify-content-around py-2 my-2 mx-auto" style="width: 18rem; background-color: white;">
+                <!-- <img class="card-image card-img-top" src=" ..." alt="..." /> -->
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-length">placeholder</p>
+                    <br />
+                    <p class="card-text">
+                        Some quick example text to build on the card title and make up the
+                        bulk of the card's content.
+                    </p>
+                    <a class="d-flex btn btn-success card-href justify-content-center">Add</a>
+                </div>
             </div>
-            <div>
-                <img src="../assets/home.svg" width="55px" />
-            </div>
-            <div>
-                <img src="../assets/history.svg" width="55px" />
-            </div>
-        </nav>
+        </template>
 
         <!---------------------------------------------->
         <!-- Your own JavaScript functions go here    -->
         <!---------------------------------------------->
 
-        <script src="./scripts/skeleton.js"></script>
-        <script src="./scripts/firebaseAPI.js"></script>
-        <script>
-            logout();       //make sure user is logged out
-        </script>
-
+        <script src="../scripts/firebaseAPI.js"></script>
+        <script src="../scripts/skeleton.js"></script>
+        <script src="../scripts/main.js"></script>
 </body>
 
 </html>
