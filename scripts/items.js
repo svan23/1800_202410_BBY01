@@ -39,7 +39,8 @@ function getAllItems() {
           />
         </div>
         <div class="ms-3">
-          <div class="text-uppercase fw-bold sz-4">${item.name}</div>
+          <div class="text-uppercase fw-bold sz-4 ">${item.name}</div>
+          <div class="price">$ ${item.price}</div>
           <div class="text-capitalize">${item.category}</div>
           <div class="text-lowercase fw-bold">${item.quantity} available</div>
         </div>
