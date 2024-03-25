@@ -93,45 +93,41 @@ function writeSalesItem() {
     });
 }
 
-// Reading from Collection of Data
+// Ges the reference to the template
+var template = document.getElementById("saleCardTemplate");
 
-//------------------------------------------------------------------------------
-// Input parameter is a string representing the collection we are reading from
-//------------------------------------------------------------------------------
-function displayCardsDynamically(salesRef) {
-    let cardTemplate = document.getElementById("saleCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
+// Gets the reference to the container where the cards will be displayed
+var container = document.getElementById("mock-sales-go-here");
 
-    // Clears the container before adding new cards.
-    document.getElementById("mock-sales-go-here").innerHTML = "";
+// Gets the reference to the Firestore collection
+var salesRef = db.collection("mock-sales");
 
-    db.collection(salesRef).get()   //the collection called "mock-sales"
-        .then(allSales => {
-            //var i = 1;  //Optional: if you want to have a unique ID for each hike
-            allSales.forEach(doc => { //iterate thru each doc
-                var title = doc.data().name;       // get value of the "name" key
-                var details = doc.data().details;  // get value of the "details" key
-                // var hikeCode = doc.data().itemID;    //get unique ID to each hike to be used for fetching right image
-                var quantity = doc.data().quantity; //gets the quantity field
-                let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
+// Get all sale items from the Firestore collection
+salesRef.get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        // Clone the template content for each sale item
+        var clone = template.content.cloneNode(true);
 
-                //update title and text and image
-                newcard.querySelector('.card-title').innerHTML = title;
-                newcard.querySelector('.card-length').innerHTML = "Quantity: " + quantity + " Remaining";
-                newcard.querySelector('.card-text').innerHTML = "Details: " + details;
-                // newcard.querySelector('.card-image').src = `./images/${hikeCode}.jpg`; //Example: NV01.jpg
+        // Update the cloned content with the sale item data
+        clone.querySelector(".card-title").innerHTML = doc.data().name;
+        clone.querySelector(".card-length").innerHTML = "Quantity: " + doc.data().quantity + " Remaining";
+        clone.querySelector(".card-text").innerHTML = "Details: " + doc.data().details;
 
-                //Optional: give unique ids to all elements for future use
-                // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-                // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-                // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+        // Add an event listener to the update button for each sale item
+        clone.querySelector(".updateQuantity").addEventListener("click", function() {
+            var docRef = db.collection("mock-sales").doc(doc.id);
+            var currentQuantity = doc.data().quantity;
+            var newQuantityValue = Math.max(currentQuantity - 1, 0); // Ensure quantity does not go below zero
+            docRef.update({
+                quantity: newQuantityValue
+            }).then(() => {
+                console.log("Document successfully updated.");
+            }).catch((error) => {
+                console.log("Error updating document: ", error);
+            });
+        });
 
-                //attach to gallery, Example: "sales-go-here"
-                document.getElementById(salesRef + "-go-here").appendChild(newcard);
-
-                //i++;   //Optional: iterate variable to serve as unique ID
-            })
-        })
-}
-displayCardsDynamically("mock-sales");  //input param is the name of the collection
-
-// console.log(writeSalesItem());
+        // Append the cloned content to the container
+        container.appendChild(clone);
+    });
+});
