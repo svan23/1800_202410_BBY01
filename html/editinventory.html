@@ -18,7 +18,7 @@
       <div class="p-4">
         <div class="d-flex justify-content-between">
           <button type="button" class="btn btn-light fs-5">Cancle</button>
-          <button type="button" class="btn btn-light fs-5">Done</button>
+          <button type="button" class="btn btn-light fs-5" onclick="writeItem()">Done</button>
         </div>
         <div class="d-flex justify-content-center my-3">
           <img
@@ -38,25 +38,29 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-lg">Name</span>
           </div>
-          <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+          <input id="name" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
         </div>
+
+        <div class="input-group input-group-lg">
+          <div class="input-group-prepend">
+            <span  class="input-group-text" id="inputGroup-sizing-lg">Price</span>
+          </div>
+          <input id="price" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+        </div>
+
         <div class="input-group input-group-lg">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-lg">Category</span>
           </div>
-          <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+          <input id="category" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
         </div>
-        <div class="input-group input-group-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg">Item ID</span>
-          </div>
-          <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-        </div>
+        
+          
         <div class="input-group input-group-lg">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-lg">Quantity</span>
           </div>
-          <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+          <input id = "quantity" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
         </div>
      
         <nav
@@ -94,6 +98,6 @@
     />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="../scripts/firebaseAPI.js"></script>
-    <script src="../scripts/items.js"></script>
+    <script src="../scripts/editinventory.js"></script>
   </body>
 </html>
