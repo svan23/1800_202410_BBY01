@@ -74,8 +74,6 @@ function displayCardsDynamically(collection) {
   let cardTemplate = document.getElementById("salesListTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable.
 
   db.collection(collection)
-  .orderBy("quantity", "desc")
-  .limit(5)
     .get() //the collection called "hikes"
     .then((allHikes) => {
       //var i = 1;  //Optional: if you want to have a unique ID for each hike
@@ -83,16 +81,16 @@ function displayCardsDynamically(collection) {
         //iterate thru each doc
         var name = doc.data().name; // get value of the "name" key
         var location = doc.data().location; // get value of the "details" key
-        var time = doc.data().last_updated.toDate(); //get unique ID to each hike to be used for fetching right image
+        var time = doc.data().time; //get unique ID to each hike to be used for fetching right image
         var quantity = doc.data().quantity; //gets the length field
         let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
         var docID = doc.id;
 
         //update title and text and image
-        newcard.querySelector("#item_name").innerHTML = name;
-        newcard.querySelector("#item_quantity").innerHTML = "quantity: " + quantity;
-        newcard.querySelector("#card-location").innerHTML = "location: " + location;
-        newcard.querySelector(".card-time").innerHTML = "last updated: " + time;
+        newcard.querySelector(".item-name").innerHTML = name;
+        newcard.querySelector(".item-quantity").innerHTML = "quantity: " + quantity;
+        newcard.querySelector(".card-location").innerHTML = "location: " + location;
+        newcard.querySelector(".card-time").innerHTML = time;
         // newcard.querySelector(".card-image").src = `./images/${hikeCode}.jpg`; //Example: NV01.jpg
         newcard.querySelector("a").href = "eachHike.html?docID=" + docID;
 
@@ -107,10 +105,9 @@ function displayCardsDynamically(collection) {
         //i++;   //Optional: iterate variable to serve as unique ID
       });
     });
-    
 }
 
-displayCardsDynamically("inventory"); //input param is the name of the collection
+displayCardsDynamically("sales_item"); //input param is the name of the collection
 
 
 
