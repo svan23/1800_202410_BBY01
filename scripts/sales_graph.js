@@ -6,7 +6,7 @@ function drawGraph(collection) {
   var itemName = [];
   var itemQuantity = [];
   db.collection(collection)
-    .orderBy("quantity", "desc")
+    .orderBy("total_sold_today", "desc")
     .limit(5)
     .get() //the collection called "hikes"
     .then((allSales) => {
@@ -16,7 +16,7 @@ function drawGraph(collection) {
         var xdat = doc.data().name; // get value of the "name" key
         var location = doc.data().location; // get value of the "details" key
         var time = doc.data().last_updated.toDate(); //get unique ID to each hike to be used for fetching right image
-        var ydat = doc.data().quantity; //gets the length field
+        var ydat = doc.data().total_sold_today; //gets the length field
         // let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
         var newpoint = { x: xdat, y: ydat };
         points.push(newpoint);
