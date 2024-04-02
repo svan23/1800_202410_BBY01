@@ -19,13 +19,13 @@
       <div class="d-flex flex-column px-2">
         <div class="d-flex my-3">
           <input type="text" class="form-control" placeholder="Search" />
-          <button type="button" class="btn bg-secondary-subtle fs-3 fw-bold">+</button>
+          <button type="button" class="btn bg-secondary-subtle fs-3 fw-bold" onclick="addItem()">+</button>
         </div>
         <div class="fs-4 ps-2" id="item-list">
          
         </div>
       </div>
-      <nav
+      <!-- <nav
         class="d-flex justify-content-around fixed-bottom py-0.5 bg-secondary-subtle align-items-center"
       >
         <div>
@@ -37,7 +37,9 @@
         <div>
           <img src="../assets/history.svg" width="55px" />
         </div>
-      </nav>
+      </nav> -->
+
+      <nav><div class="py-5" id="navbarPlaceholder"></div></nav>
     </div>
 
     <script
@@ -60,5 +62,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="../scripts/firebaseAPI.js"></script>
     <script src="../scripts/inventorylist.js"></script>
+    <script src="../scripts/skeleton.js"></script>
   </body>
 </html>
