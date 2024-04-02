@@ -155,6 +155,7 @@ function displayCardsDynamically() {
                 var currentlySold = doc.data().total_sold_today;
                 var newQuantityValue = Math.max(currentQuantity - 1, 0); // Ensure quantity does not go below zero
                 var newSaleValue = currentlySold + 1; // Increments by One when interacted with
+                var newTimeUpdated = new Date().toLocaleString();
 
                 // Store the sold item and quantity in local storage
                 var saleItem = doc.data().name; // Gets item name
@@ -167,7 +168,8 @@ function displayCardsDynamically() {
 
                 docRef.update({
                     quantity: newQuantityValue,
-                    total_sold_today: newSaleValue
+                    total_sold_today: newSaleValue,
+                    last_updated: newTimeUpdated
                 }).then(() => {
                     console.log("Document successfully updated.");
                     location.replace(location.href);
