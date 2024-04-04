@@ -46,15 +46,11 @@ function uploadPic(postDocID) {
           db.collection("inventory")
             .doc(postDocID)
             .update({
-              image: url, // Save the URL into users collection
+              photo: url, // Save the URL into users collection
             })
             // AFTER .update is done
             .then(function () {
-              console.log("4. Added pic URL to Firestore.");
-              // One last thing to do:
-              // save this postID into an array for the OWNER
-              // so we can show "my posts" in the future
-              savePostIDforUser(postDocID);
+              window.location.href = "inventorypage.html";
             });
         });
     })
@@ -84,6 +80,4 @@ function writeItem() {
       console.log(doc.id);
       uploadPic(doc.id);
     });
-
-  window.location.href = "inventorypage.html";
 }
