@@ -1,83 +1,70 @@
-var ImageFile;
-function listenFileSelect() {
-  // listen for file selection
-  var fileInput = document.getElementById("mypic-input"); // pointer #1
-  const image = document.getElementById("uploadedimg"); // pointer #2
-
-  // When a change happens to the File Chooser Input
-  fileInput.addEventListener("change", function (e) {
-    ImageFile = e.target.files[0]; //Global variable
-    var blob = URL.createObjectURL(ImageFile);
-    image.src = blob; // Display this image
-  });
+function getUrlParameter(name) {
+  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+  var results = regex.exec(location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 }
-listenFileSelect();
 
-//------------------------------------------------
-// So, a new post document has just been added
-// and it contains a bunch of fields.
-// We want to store the image associated with this post,
-// such that the image name is the postid (guaranteed unique).
-//
-// This function is called AFTER the post has been created,
-// and we know the post's document id.
-//------------------------------------------------
-function uploadPic(postDocID) {
-  console.log("inside uploadPic " + postDocID);
-  var storageRef = storage.ref("images/" + postDocID + ".jpg");
+// Get the saleID from the URL
+const saleID = getUrlParameter('saleID');
+console.log('saleID:', saleID);
 
-  storageRef
-    .put(ImageFile) //global variable ImageFile
+// Call the function to populate the fields with the item's data
 
-    // AFTER .put() is done
-    .then(function () {
-      console.log("2. Uploaded to Cloud Storage.");
-      storageRef
-        .getDownloadURL()
-
-        // AFTER .getDownloadURL is done
-        .then(function (url) {
-          // Get URL of the uploaded file
-          console.log("3. Got the download URL.");
-
-          // Now that the image is on Storage, we can go back to the
-          // post document, and update it with an "image" field
-          // that contains the url of where the picture is stored.
-          db.collection("inventory")
-            .doc(postDocID)
-            .update({
-              photo: url, // Save the URL into users collection
-            })
-            // AFTER .update is done
-            .then(function () {
-              window.location.href = "inventorypage.html";
-            });
-        });
-    })
-    .catch((error) => {
-      console.log("error uploading to cloud storage");
+function getItemAndPopulateFields(itemId) {
+    const itemsRef = db.collection("inventory").doc(itemId);
+  
+    itemsRef.get().then((doc) => {
+      if (doc.exists) {
+        const item = doc.data();
+  
+        // Populate the form fields with the item's data
+        document.getElementById("name").value = item.name;
+        document.getElementById("price").value = item.price;
+        document.getElementById("category").value = item.category;
+        document.getElementById("quantity").value = item.quantity;
+        document.getElementById("details").value = item.details;
+        document.getElementById("location").value = item.location;
+        document.getElementById("uploadedimg").src = item.photo;
+      } else {
+        console.log("No such document!");
+      }
+    }).catch((error) => {
+      console.log("Error getting document:", error);
     });
-}
+  }
+  // Usage: Pass the document ID of the item you want to fetch and populate the fields with
+  getItemAndPopulateFields(saleID);
 
-function writeItem() {
-  //define a variable for the collection you want to create in Firestore to populate data
-  const itemsRef = db.collection("inventory");
-
-  const itemName = document.getElementById("name").value;
-  const itemPrice = document.getElementById("price").value;
-  const itemCategory = document.getElementById("category").value;
-  const itemQuantity = document.getElementById("quantity").value;
-
-  itemsRef
-    .add({
-      category: itemCategory,
+  function saveChanges(itemId) {
+    const itemsRef = db.collection("inventory").doc(itemId);
+  
+    const itemName = document.getElementById("name").value;
+    const itemPrice = document.getElementById("price").value;
+    const itemCategory = document.getElementById("category").value;
+    const itemQuantity = parseInt(document.getElementById("quantity").value);
+    const itemDetails = document.getElementById("details").value;
+    const itemLocation = document.getElementById("location").value;
+  
+    return itemsRef.update({
       name: itemName,
       price: itemPrice,
+      category: itemCategory,
       quantity: itemQuantity,
+      details: itemDetails,
+      location: itemLocation
     })
-    .then((doc) => {
-      console.log("1. Post document added!");
-      console.log(doc.id);
-      uploadPic(doc.id);
+    .then(() => {
+      console.log("Document successfully updated!");
+      window.location.href = "inventorypage.html";
+    })
+    .catch((error) => {
+      console.error("Error updating document: ", error);
     });
-}
+  }
+  
+  // Call saveChanges function when the user clicks the save button
+  document.getElementById("save-button").addEventListener("click", () => {
+    saveChanges(saleID);
+  });
+  

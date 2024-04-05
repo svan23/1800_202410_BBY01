@@ -130,7 +130,6 @@ function writeSalesItem() {
 
 console.log(firebase);
 
-
 var template = document.getElementById("saleCardTemplate"); // Gets the reference to the template
 var container = document.getElementById("mock-sales-go-here"); // Gets the reference to the container where the cards will be displayed
 var salesRef = db.collection("inventory"); // Gets the reference to the Firestore collection
@@ -151,6 +150,7 @@ function displayCardsDynamically() {
             // Add an event listener to the update button for each sale item
             clone.querySelector(".updateQuantity").addEventListener("click", function () {
                 var docRef = db.collection("inventory").doc(doc.id);
+                console.log(doc.id);
                 var currentQuantity = doc.data().quantity;
                 var currentlySold = doc.data().total_sold_today;
                 var newQuantityValue = Math.max(currentQuantity - 1, 0); // Ensure quantity does not go below zero
