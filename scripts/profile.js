@@ -13,16 +13,20 @@ function populateUserInfo() {
                     let userName = userDoc.data().name;
                     let userDetails = userDoc.data().details;
                     let userPosition = userDoc.data().position;
+                    let userLocationBased = userDoc.data().location;
 
                     //if the data fields are not empty, then write them in to the form.
                     if (userName != null) {
                         document.getElementById("nameInput").value = userName;
                     }
                     if (userDetails != null) {
-                        document.getElementById("bizInput").value = userDetails;
+                        document.getElementById("detailsInput").value = userDetails;
                     }
                     if (userPosition != null) {
                         document.getElementById("positionInput").value = userPosition;
+                    }
+                    if (userLocationBased != null) {
+                        document.getElementById("locationInput").value = userLocationBased;
                     }
                 })
         } else {
@@ -45,11 +49,13 @@ function saveUserInfo() {
     userName = document.getElementById('nameInput').value;
     userDetails = document.getElementById('detailsInput').value;
     userPosition = document.getElementById('positionInput').value;
+    userLocationBased = document.getElementById('locationInput').value;
 
     currentUser.update({
         name: userName,
         details: userDetails,
-        position: userPosition
+        position: userPosition,
+        location: userLocationBased
     })
     .then(() => {
         console.log("Document successfully updated!");
