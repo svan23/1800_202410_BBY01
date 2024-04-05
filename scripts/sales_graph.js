@@ -15,7 +15,7 @@ function drawGraph(collection) {
         //iterate thru each doc
         var xdat = doc.data().name; // get value of the "name" key
         var location = doc.data().location; // get value of the "details" key
-        var time = doc.data().last_updated.toDate(); //get unique ID to each hike to be used for fetching right image
+        var time = doc.data().last_updated; //get unique ID to each hike to be used for fetching right image
         var ydat = doc.data().total_sold_today; //gets the length field
         // let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
         var newpoint = { x: xdat, y: ydat };
