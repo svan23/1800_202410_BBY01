@@ -87,3 +87,8 @@ function writeItem() {
       uploadPic(doc.id);
     });
 }
+
+function cancel() {
+  console.log("Cancel Edit Inventory.");
+  window.location.href = "inventorypage.html";
+}
