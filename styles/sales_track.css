@@ -9,11 +9,6 @@ body {
     height: 125vh;
 }
 
-.container-fluid {
-    margin: 0;
-    padding: 0;
-}
-
 .card {
     height: 10rem;
     display: grid;
@@ -21,6 +16,10 @@ body {
     justify-content: center;
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+#container.container {
+    padding-top: 4.25rem;
 }
 
 .card-img-top{
@@ -46,4 +45,60 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
 }
+
+/* Sale Template Cards */
+
+.template-container {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    max-width: 100%;
+    height: auto;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-length {
+    font-size: 1rem;
+    color: #888;
+}
+
+.card-text {
+    font-size: 0.875rem;
+}
+
+.updateQuantity {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s;
+}
+
+.card-href {
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+
 

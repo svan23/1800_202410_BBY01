@@ -46,10 +46,12 @@ function displayCardsDynamically() {
                 var saleItem = doc.data().name; // Gets item name
                 var user = firebase.auth().currentUser;
                 var userId = user ? user.uid : null;
+                var location = doc.data().location; // Gets location
                 var timestamp = new Date().toLocaleString(); // Gets the current timestamp
                 console.log("Sale Item:", saleItem);
+                console.log(location);
                 
-                addToSaleHistory(saleItem, 1, timestamp, userId);
+                addToSaleHistory(saleItem, 1, timestamp, userId, location);
 
                 docRef.update({
                     quantity: newQuantityValue,
@@ -69,8 +71,8 @@ function displayCardsDynamically() {
 }
 displayCardsDynamically();
 
-function addToSaleHistory(itemName, quantity, timestamp, userId) {
-    let saleItem = { name: itemName, quantity: quantity, timestamp: timestamp, userId: userId };
+function addToSaleHistory(itemName, quantity, timestamp, userId, location) {
+    let saleItem = { name: itemName, quantity: quantity, timestamp: timestamp, userId: userId, location: location };
     let saleHistory = JSON.parse(localStorage.getItem("saleHistory")) || [];
     saleHistory.push(saleItem);
     localStorage.setItem("saleHistory", JSON.stringify(saleHistory));

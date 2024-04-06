@@ -1,104 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <title>Edit Inventory</title>
-  </head>
 
-  <body>
-    <div class="container p-0">
-      <div class="bg-secondary-subtle p-3 fs-3">Edit Inventory</div>
-      <div class="p-4">
-        <div class="d-flex justify-content-between">
-          <button type="button" class="btn btn-light fs-5" onclick="cancel()">Cancel</button>
-          <button type="button" class="btn btn-light fs-5" id = "save-button">Done</button>
-        </div>
-        <div class="d-flex justify-content-center my-3">
-          <img
-            id="uploadedimg"
-            src="https://dummyimage.com/285x390/000/fff&text=Item+photo"
-            height="390px"
-          />
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"></script>
+  <title>Edit Inventory</title>
+</head>
 
-        <div class="d-flex justify-content-center py-3">
-          <button class="btn bg-secondary-subtle ">
-            <input type="file" id="mypic-input" accept="image/*" />
-          </button>
+<body>
+
+  <div class="container-fluid fixed-top p-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <div class="container-fluid">
+            <h1 class="display-6 mx-auto">
+                Edit Inventory
+            </h1>
         </div>
+    </nav>
+</div>
+
+  <div class="container p-0">
+    <div class="p-3 fs-4"></div>
+    <div class="p-4 mt-4">
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-light fs-5" onclick="cancel()">Cancel</button>
+        <button type="button" class="btn btn-light fs-5" id="save-button">Done</button>
       </div>
-      <div>
-        <div class="input-group input-group-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg">Name</span>
-          </div>
-          <input id="name" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
-        </div>
+      <div class="d-flex justify-content-center my-3">
+        <img id="uploadedimg" src="https://dummyimage.com/285x390/000/fff&text=Item+photo" height="390px" />
+      </div>
 
-        <div class="input-group input-group-lg">
-          <div class="input-group-prepend">
-            <span  class="input-group-text" id="inputGroup-sizing-lg">Price</span>
-          </div>
-          <input id="price" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+      <div class="d-flex justify-content-center py-3">
+        <button class="btn bg-secondary-subtle ">
+          <input type="file" id="mypic-input" accept="image/*" />
+        </button>
+      </div>
+    </div>
+    <div>
+      <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg">Name</span>
         </div>
+        <input id="name" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+      </div>
 
-        <div class="input-group input-group-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg">Category</span>
-          </div>
-          <input id="category" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+      <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg">Price</span>
         </div>
+        <input id="price" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+      </div>
 
-        <div class="input-group input-group-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg">Details</span>
-          </div>
-          <input id = "details" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+      <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg">Category</span>
         </div>
+        <input id="category" type="text" class="form-control" aria-label="Large"
+          aria-describedby="inputGroup-sizing-sm">
+      </div>
 
-        <div class="input-group input-group-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg">Location</span>
-          </div>
-          <input id = "location" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+      <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg">Details</span>
         </div>
-          
-        <div class="input-group input-group-lg">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg">Quantity</span>
-          </div>
-          <input id = "quantity" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+        <input id="details" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+      </div>
+
+      <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg">Location</span>
         </div>
-     
-        <!-- <nav
-        class="d-flex justify-content-around fixed-bottom py-0.5 bg-secondary-subtle align-items-center"
-      >
-        <div>
-          <img src="../assets/inventory.svg" width="45px" />
+        <input id="location" type="text" class="form-control" aria-label="Large"
+          aria-describedby="inputGroup-sizing-sm">
+      </div>
+
+      <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg">Quantity</span>
         </div>
-        <div>
-          <img src="../assets/home.svg" width="55px" />
-        </div>
-        <div>
-          <img src="../assets/history.svg" width="55px" />
-        </div>
-      </nav> -->
-      <nav><div class="py-5" id="navbarPlaceholder"></div></nav>
-      
+        <input id="quantity" type="text" class="form-control" aria-label="Large"
+          aria-describedby="inputGroup-sizing-sm">
+      </div>
+
     </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    <footer>
+      <div class = "py-5" id="footerPlaceholder"></div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
 
     <!-- Firebase 8 CDNs -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -106,14 +103,11 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
-    />
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="../scripts/firebaseAPI.js"></script>
     <script src="../scripts/editinventory.js"></script>
     <script src="../scripts/skeleton.js"></script>
-  </body>
+</body>
+
 </html>

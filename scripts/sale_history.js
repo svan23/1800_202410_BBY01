@@ -46,6 +46,7 @@ function populateSales() {
                     saleCard.querySelector(".card-header").innerHTML = "Item Name: " + soldItem.name;
                     saleCard.querySelector(".card-title").innerHTML = soldItem.timestamp;
                     saleCard.querySelector(".card-length").innerHTML = "Sold: " + soldItem.quantity;
+                    saleCard.querySelector(".card-details").innerHTML = "Location: " + soldItem.location;
                     saleCard.querySelector(".card-text").innerHTML = "Agent: " + userDoc.data().name;
                     saleCardGroup.appendChild(saleCard);
                 });

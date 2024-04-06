@@ -1,25 +1,26 @@
-<!--navbar after login (bottom navbar)-->
-
-<nav class="navbar d-flex bg-secondary fixed-bottom py-0.5 bg-secondary-subtle justify-content-around align-items-center mt-3">
-  <div>
-    <a href="../html/inventorypage.html">
-      <img src="../assets/inventory.svg" width="45px" />
-    </a>
-  </div>
-  <div>
-    <a href="../html/sales_track.html">
-      <img src="../assets/home.svg" width="55px" />
-    </a>
-  </div>
-  <div>
-    <a href = "../html/sales_history_recent.html">
-    <!-- <a href="../html/sales_history_main.html"> -->
-      <img src="../assets/history.svg" width="55px" />
-    </a>
-  </div>
-  <div>
-    <a href="../html/profile.html">
-      <img src="../assets/profile.svg" width="55px" />
-    </a>
+<nav id = "userLoginNavbar" class="navbar d-flex p-3 fs-4 fixed-top bg-secondary justify-content-around align-items-center">
+  <div class="container-fluid">
+      <a class="navbar-brand fs-4 display-6" href="#">TrackMySales</a>
+      <button class="navbar-toggler pr-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">TrackMySales</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="../index.html">Logout</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
   </div>
 </nav>
+

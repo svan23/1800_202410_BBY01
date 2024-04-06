@@ -1,8 +1,42 @@
-#container {
-    margin-top: 5rem;
-    /* text-align: center; */
+.card {
+    height: 15rem;
+    margin-bottom: 1rem; /* Add some bottom margin */
 }
 
-#tracked-sales-container {
-    margin-top: 8rem;
+div.card-body {
+    padding: 1rem; /* Add padding to the card body */
+    margin-top: 1rem;
+    border-radius: 20%;
+}
+
+.card-header {
+    font-size: 1.25rem; /* Increase the font size of the header */
+    font-weight: bold; /* Make the header bold */
+    background-color: #f8f9fa; /* Set a light background color for the header */
+    padding: 0.5rem 1rem; /* Add padding to the header */
+    border-bottom: 1px solid #dee2e6; /* Add a bottom border to separate header from body */
+}
+
+.card-title {
+    font-size: 1rem; /* Set the font size of the title */
+    margin-top: 0.5rem; /* Add some top margin to the title */
+}
+
+.card-length,
+.card-text,
+.card-details {
+    font-size: 0.875rem; /* Set the font size of the details */
+    color: #6c757d; /* Set a slightly lighter text color for the details */
+    margin-top: 0.5rem; /* Add some top margin to the details */
+}
+
+.inner-card {
+    width: 19rem;
+    height: 13.5rem;
+    border-radius: 10%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
