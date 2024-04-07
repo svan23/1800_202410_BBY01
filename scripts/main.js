@@ -59,9 +59,10 @@ function displayCardsDynamically() {
                     last_updated: newTimeUpdated
                 }).then(() => {
                     console.log("Document successfully updated.");
-                    location.replace(location.href);
+                    window.location.href = window.location.href;
+                    console.log("After reload.");
                 }).catch((error) => {
-                    window.alert("Error updating document: ", error);
+                    console.error("Error updating document: ", error);
                 });
             });
             // Append the cloned content to the container

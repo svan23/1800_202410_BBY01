@@ -20,12 +20,16 @@ function getAllItems() {
           <div class="mb-3">
             <img class="inventoryimg" src="${item.photo}" />
           </div>
-          <div class="ms-3">
-            <div class="text-uppercase fw-bold sz-4">${item.name}</div>
-            <div class="price">${item.price}</div>
-            <div class="text-capitalize">${item.category}</div>
-            <div class="text-lowercase fw-bold">${item.quantity} available</div>
-            <button class="btn btn-primary" onclick="editItem('${item.id}')">Edit</button>
+          <div class="ms-3 card-grid">
+            <div class = "item-details">
+              <div class="text-uppercase fw-bold sz-4">${item.name}</div>
+              <div class="price">${item.price}</div>
+              <div class="text-capitalize">${item.category}</div>
+              <div class="text-lowercase fw-bold">${item.quantity} available</div>
+            </div>
+            <div class = "update-button">
+            <button class="btn btn-primary ms-auto" onclick="editItem('${item.id}')">Edit</button>
+            </div>
           </div>
         </div>`;
         console.log(item.id);

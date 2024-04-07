@@ -7,3 +7,22 @@
   font-size: 18px;
   font-style: italic;
 }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "item-details button";
+}
+
+.item-details {
+  grid-area: item-details;
+}
+
+.update-button {
+  grid-area: button;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

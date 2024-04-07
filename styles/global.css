@@ -2,3 +2,21 @@ body {
     margin: 0px;
     padding: 0px;
 }
+
+.red-button {
+    background-color: red;
+    color: white;
+    width: 60vw;
+    margin: 0 auto;
+    height: 50px; /* Set your desired height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.red-button:hover {
+    background-color: darkred;
+}

@@ -40,3 +40,7 @@ div.card-body {
     justify-content: center;
     align-items: center;
 }
+
+.reset-button {
+    width: 125px;
+}

@@ -32,47 +32,53 @@
 
   <div class="container-fluid fixed-top p-0">
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-        <div class="container-fluid">
-            <h1 class="display-6 mx-auto">
-                Overall Sale View
-            </h1>
-        </div>
+      <div class="container-fluid">
+        <h1 class="display-6 mx-auto">
+          Overall Sale View
+        </h1>
+      </div>
     </nav>
-</div>
+  </div>
 
   <!--Where Tracked Sales goes-->
   <div id="container">
-    <h2 id="tracked-sales-container" class = "py-5"> </h2>
     <!-- Here is the container for cards with horizontal scrolling -->
-    <div class="container">
+    <div class="container py-5">
       <div id="inventory-go-here"></div>
-
     </div>
   </div>
 
-  <div class="btn">
-    <div>
-      <a href="../html/sales_history_graph.html">
-        <button type="button" class="btn btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
-            <path
-              d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z" />
-          </svg>
-          Graph
-        </button>
-      </a>
+  <div class = "container d-flex justify-content-center mx-auto">
+    <div class="btn">
+      <div>
+        <a href="../html/sales_history_graph.html">
+          <button type="button" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+              <path
+                d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z" />
+            </svg>
+            Graph
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="btn">
+      <div class="col-6">
+        <button type="button" class="reset-button btn btn-danger w-200" id="reset-button">Reset Sales</button>
+      </div>
     </div>
   </div>
+
 
   <footer>
-    <div class = "py-5" id="footerPlaceholder"></div>
+    <div class="py-5" id="footerPlaceholder"></div>
   </footer>
 
   <!--Template for Cards-->
   <template id="salesListTemplate">
 
-    <div class="list-group">
+    <div class="list-group py-4">
       <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
         <div class="d-flex w-100 justify-content-between">
           <!-- Item name -->
@@ -83,15 +89,15 @@
         <!-- <p class="mb-1">Some placeholder content in a paragraph.</p>
             <small>And some small print.</small> -->
       </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <!-- Item Quantity -->
-          <h5 class="mb-1" id="item_quantity">List group item heading</h5>
-          <a class="btn btn-primary card-href">Edit</a>
-          <!-- <small class="text-body-secondary">3 days ago</small> -->
-        </div>
-        <!-- <p class="mb-1">Some placeholder content in a paragraph.</p> -->
-        <!-- <small class="text-body-secondary">And some muted small print.</small> -->
+      <!-- <a href="#" class="list-group-item list-group-item-action"> -->
+      <div class="d-flex w-100 justify-content-between">
+        <!-- Item Quantity -->
+        <h5 class="mb-1" id="item_quantity">List group item heading</h5>
+        <a class="btn btn-primary card-href">Edit</a>
+        <!-- <small class="text-body-secondary">3 days ago</small> -->
+      </div>
+      <!-- <p class="mb-1">Some placeholder content in a paragraph.</p> -->
+      <!-- <small class="text-body-secondary">And some muted small print.</small> -->
       </a>
       <a href="#" class="list-group-item list-group-item-action">
         <div class="d-flex w-100 justify-content-between">

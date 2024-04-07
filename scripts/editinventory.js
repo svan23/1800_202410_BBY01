@@ -68,6 +68,24 @@ document.getElementById("save-button").addEventListener("click", () => {
   saveChanges(saleID);
 })
 
+function deleteItem(itemId) {
+  const itemsRef = db.collection("inventory").doc(itemId);
+
+  itemsRef.delete().then(() => {
+    console.log("Document successfully deleted!");
+    window.location.href = "inventorypage.html";
+  }).catch((error) => {
+    console.error("Error deleting document: ", error);
+  });
+}
+
+// Call deleteItem function when the user clicks the delete button
+document.getElementById("delete-button").addEventListener("click", () => {
+  if (confirm("Are you sure you want to delete this item?")) {
+    deleteItem(saleID);
+  }
+});
+
 function cancel() {
   console.log("Cancel Edit Inventory.");
   window.location.href = "inventorypage.html";
