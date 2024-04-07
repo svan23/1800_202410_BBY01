@@ -19,7 +19,6 @@ var template = document.getElementById("saleCardTemplate"); // Gets the referenc
 var container = document.getElementById("mock-sales-go-here"); // Gets the reference to the container where the cards will be displayed
 var salesRef = db.collection("inventory"); // Gets the reference to the Firestore collection
 
-// Get all sale items from the Firestore collection
 function displayCardsDynamically() {
     salesRef.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -65,11 +64,19 @@ function displayCardsDynamically() {
                     console.error("Error updating document: ", error);
                 });
             });
+
+            // Add the out-of-stock class and disable the button if quantity is 0
+            if (doc.data().quantity === 0) {
+                clone.querySelector(".updateQuantity").disabled = true;
+            }
+
             // Append the cloned content to the container
             container.appendChild(clone);
         });
     });
 }
+
+
 displayCardsDynamically();
 
 function addToSaleHistory(itemName, quantity, timestamp, userId, location) {
