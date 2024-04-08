@@ -32,18 +32,20 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 
-<body>
+<body class = "bg-secondary-subtle">
     <!--Navbar-->
     <nav id="navbarPlaceholder"></nav>
 
     <!--Main Content-->
-    <div class="container">
-        <h1 class = "text-center">Let's Login!</h1>
+    <div class = "container d-flex align-items-center justify-content-center">
+        <div class="container">
+            <h1 class = "text-center mt-5">Let's Login!</h1>
+            <div class = "mt-5" id="firebaseui-auth-container"></div>
+            <div id="loader">Loading...</div>
+        </div>
     </div>
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
 
-    <footer id="footerPlaceholder"></footer>
+    <footer class = "fixed-bottom" id="footerPlaceholder"></footer>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->

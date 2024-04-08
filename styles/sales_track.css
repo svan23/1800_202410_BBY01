@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+nav {
+    padding-bottom: 50px;
+}
+
 body {
     background-color: lightgray;
     height: 125vh;

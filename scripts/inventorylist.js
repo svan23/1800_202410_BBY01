@@ -51,3 +51,46 @@ function editItem(itemID) {
 }
 
 getAllItems();
+
+// Function to filter items based on search input
+function filterItems(searchTerm) {
+  const itemsRef = db.collection("inventory");
+  const lowerCaseSearchTerm = searchTerm.toLowerCase();
+
+  itemsRef.get()
+      .then((querySnapshot) => {
+          const itemList = document.getElementById("item-list");
+          itemList.innerHTML = ""; // Clear previous items
+
+          querySnapshot.forEach((doc) => {
+              const item = doc.data();
+              const itemName = item.name.toLowerCase();
+
+              if (itemName.includes(lowerCaseSearchTerm)) {
+                  const itemCard = document.createElement("div");
+                  itemCard.classList.add("card", "mb-3");
+                  itemCard.innerHTML = `
+                      <div class="card-body">
+                          <h5 class="card-title">${item.name}</h5>
+                          <p class="card-text">Price: ${item.price}</p>
+                          <p class="card-text">Quantity: ${item.quantity}</p>
+                          <p class="card-text">Details: ${item.details}</p>
+                          <div class="update-button">
+                              <button class="btn btn-primary ms-auto" onclick="editItem('${doc.id}')">Edit</button>
+                          </div>
+                      </div>
+                  `;
+                  itemList.appendChild(itemCard);
+              }
+          });
+      })
+      .catch((error) => {
+          console.error("Error getting documents: ", error);
+      });
+}
+
+// Event listener for search input changes
+document.getElementById("searchInput").addEventListener("input", function() {
+  const searchTerm = this.value.trim();
+  filterItems(searchTerm);
+});
