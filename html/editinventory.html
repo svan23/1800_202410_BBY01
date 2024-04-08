@@ -5,25 +5,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-  crossorigin="anonymous"></script>
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
   <title>Edit Inventory</title>
-  <link rel = "stylesheet" href = "../styles/global.css">
+  <link rel="stylesheet" href="../styles/global.css">
 </head>
 
 <body>
 
   <div class="container-fluid fixed-top p-0">
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-        <div class="container-fluid">
-            <h1 class="display-6 mx-auto">
-                Edit Inventory
-            </h1>
-        </div>
+      <div class="container-fluid">
+        <h1 class="display-6 mx-auto">
+          Edit Inventory
+        </h1>
+      </div>
     </nav>
-</div>
+  </div>
 
   <div class="container p-0">
     <div class="p-3 fs-4"></div>
@@ -33,7 +33,8 @@
         <button type="button" class="btn btn-light fs-5" id="save-button">Done</button>
       </div>
       <div class="d-flex justify-content-center my-3">
-        <img id="uploadedimg" src="https://dummyimage.com/285x390/000/fff&text=Item+photo" height="390px" />
+        <img id="uploadedimg" src="https://dummyimage.com/285x390/000/fff&text=Item+photo"
+          style="max-width: 250px; max-height: 200px;" height="390px" />
       </div>
 
       <div class="d-flex justify-content-center py-3">
@@ -87,18 +88,18 @@
         <input id="quantity" type="text" class="form-control" aria-label="Large"
           aria-describedby="inputGroup-sizing-sm">
       </div>
-      
+
       <div class="btn-lg">
         <div class="row mx-auto mt-5">
           <div class="col-6">
-              <button id = "delete-button" class="btn red-button">Delete</button>
+            <button id="delete-button" class="btn red-button">Delete</button>
           </div>
         </div>
       </div>
     </div>
 
     <footer>
-      <div class = "py-5" id="footerPlaceholder"></div>
+      <div class="py-5" id="footerPlaceholder"></div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

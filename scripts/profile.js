@@ -1,50 +1,44 @@
-var currentUser;               //points to the document of the user who is logged in
+var currentUser; // points to the document of the user who is logged in
+
+// Function to populate user information in the form
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
-        // Check if user is signed in:
         if (user) {
+            currentUser = db.collection("users").doc(user.uid);
+            currentUser.get().then(userDoc => {
+                let userName = userDoc.data().name;
+                let userDetails = userDoc.data().details;
+                let userPosition = userDoc.data().position;
+                let userLocationBased = userDoc.data().location;
 
-            //go to the correct user document by referencing to the user uid
-            currentUser = db.collection("users").doc(user.uid)
-            //get the document for current user.
-            currentUser.get()
-                .then(userDoc => {
-                    //get the data fields of the user
-                    let userName = userDoc.data().name;
-                    let userDetails = userDoc.data().details;
-                    let userPosition = userDoc.data().position;
-                    let userLocationBased = userDoc.data().location;
-
-                    //if the data fields are not empty, then write them in to the form.
-                    if (userName != null) {
-                        document.getElementById("nameInput").value = userName;
-                    }
-                    if (userDetails != null) {
-                        document.getElementById("detailsInput").value = userDetails;
-                    }
-                    if (userPosition != null) {
-                        document.getElementById("positionInput").value = userPosition;
-                    }
-                    if (userLocationBased != null) {
-                        document.getElementById("locationInput").value = userLocationBased;
-                    }
-                })
+                if (userName != null) {
+                    document.getElementById("nameInput").value = userName;
+                }
+                if (userDetails != null) {
+                    document.getElementById("detailsInput").value = userDetails;
+                }
+                if (userPosition != null) {
+                    document.getElementById("positionInput").value = userPosition;
+                }
+                if (userLocationBased != null) {
+                    document.getElementById("locationInput").value = userLocationBased;
+                }
+            });
         } else {
-            // No user is signed in.
             console.log("No user is signed in");
         }
     });
 }
 
-//call the function to run it 
+// Call the function to populate user info
 populateUserInfo();
 
-// To edit the function
+// Function to edit user info
 function editUserInfo() {
     document.getElementById('personalInfoFields').disabled = false;
 }
 
-// To save user Info
+// Function to save user info
 function saveUserInfo() {
     userName = document.getElementById('nameInput').value;
     userDetails = document.getElementById('detailsInput').value;
@@ -56,11 +50,19 @@ function saveUserInfo() {
         details: userDetails,
         position: userPosition,
         location: userLocationBased
-    })
-    .then(() => {
+    }).then(() => {
         console.log("Document successfully updated!");
         localStorage.setItem("employeeName", userName); // Store Employee Name into Local Storage
-    })
+        // Update the display name in the authentication object
+        firebase.auth().currentUser.updateProfile({
+            displayName: userName
+        }).then(() => {
+            // Update the name in the getNameFromAuth function in main.js
+            getNameFromAuth();
+        }).catch((error) => {
+            console.error("Error updating display name in authentication:", error);
+        });
+    });
 
     document.getElementById('personalInfoFields').disabled = true;
 }
