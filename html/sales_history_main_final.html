@@ -76,43 +76,32 @@
   </footer>
 
   <!--Template for Cards-->
-  <template id="salesListTemplate">
 
+  <template id="salesListTemplate">
     <div class="list-group py-4">
-      <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+      <div class="list-group-item list-group-item-action" aria-current="true">
         <div class="d-flex w-100 justify-content-between">
-          <!-- Item name -->
-          <h5 class="mb-1" id="item_name">List group item heading</h5>
-          <!-- Sales time and date -->
-          <small class="card-time">3 days ago</small>
+          <h5 class="mb-1" id="item_name">Item Name</h5>
+          <small id="card-time">Last Updated: 3 days ago</small>
         </div>
-        <!-- <p class="mb-1">Some placeholder content in a paragraph.</p>
-            <small>And some small print.</small> -->
-      </a>
-      <!-- <a href="#" class="list-group-item list-group-item-action"> -->
-      <div class="d-flex w-100 justify-content-between">
-        <!-- Item Quantity -->
-        <h5 class="mb-1" id="item_quantity">List group item heading</h5>
-        <a class="btn btn-primary card-href">Edit</a>
-        <!-- <small class="text-body-secondary">3 days ago</small> -->
+        <div class="list-group-item-divider"></div>
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1" id="item_quantity">Sold: 10</h5>
+        </div>
+        <div class="list-group-item-divider"></div>
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1" id="card-location">Location: ABC Store</h5>
+        </div>
       </div>
-      <!-- <p class="mb-1">Some placeholder content in a paragraph.</p> -->
-      <!-- <small class="text-body-secondary">And some muted small print.</small> -->
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <!-- Sales location -->
-          <h5 class="mb-1" id="card-location">List group item heading</h5>
-          <!-- <small class="text-body-secondary">3 days ago</small> -->
-        </div>
-        <!-- <p class="mb-1">Some placeholder content in a paragraph.</p> -->
-        <!-- <small class="text-body-secondary">And some muted small print.</small> -->
-      </a>
-      </br>
-    </div>
-    </div>
     </div>
   </template>
+  
+
+  <!-- newcard.querySelector("#item_name").innerHTML = name;
+  newcard.querySelector("#item_quantity").innerHTML = "Sold: " + total_sold_today;
+  newcard.querySelector("#card-location").innerHTML = "Location: " + location;
+  newcard.querySelector(".card-time").innerHTML = "Last Updated: " + time; -->
+  
 
   <!--Bottom Navbar-->
 

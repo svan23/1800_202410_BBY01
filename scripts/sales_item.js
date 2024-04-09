@@ -24,7 +24,7 @@ function displayCardsDynamically(collection) {
         newcard.querySelector("#item_name").innerHTML = name;
         newcard.querySelector("#item_quantity").innerHTML = "Sold: " + total_sold_today;
         newcard.querySelector("#card-location").innerHTML = "Location: " + location;
-        newcard.querySelector(".card-time").innerHTML = "Last Updated: " + time;
+        newcard.querySelector("#card-time").innerHTML = "Last Updated: " + time;
         // newcard.querySelector(".card-image").src = `./images/${hikeCode}.jpg`; //Example: NV01.jpg
         // newcard.querySelector("a").href = "eachHike.html?docID=" + docID;
 

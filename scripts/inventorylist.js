@@ -2,7 +2,7 @@
 var inventoryRef = db.collection("inventory"); // Gets the reference to the Firestore collection
 
 function getAllItems() {
-    inventoryRef.get()
+  inventoryRef.get()
     .then((allInventory) => {
       //process items to become array.
       const inventory = allInventory.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
@@ -16,22 +16,20 @@ function getAllItems() {
       inventory.forEach((item) => {
         console.log("item", item); // Add this line for debugging
         itemsHtml += `
-        <div class="d-flex">
+        <div class="d-flex justify-content-between">
           <div class="mb-3">
             <img class="inventoryimg" src="${item.photo}" />
           </div>
-          <div class="ms-3 card-grid">
-            <div class = "item-details">
-              <div class="text-uppercase fw-bold sz-4">${item.name}</div>
-              <div class="price">${item.price}</div>
-              <div class="text-capitalize">${item.category}</div>
-              <div class="text-lowercase fw-bold">${item.quantity} available</div>
+            <div class="item-details">
+                <div class="text-uppercase fw-bold sz-4">${item.name}</div>
+                <div class="price">${item.price}</div>
+                <div class="text-capitalize">${item.category}</div>
+                <div class="text-lowercase fw-bold">${item.quantity} available</div>
             </div>
-            <div class = "update-button">
-            <button class="btn btn-primary ms-auto" onclick="editItem('${item.id}')">Edit</button>
+            <div class="update-button">
+              <button class="btn btn-primary" onclick="editItem('${item.id}')">Edit</button>
             </div>
-          </div>
-        </div>`;
+      </div>`;
         console.log(item.id);
       });
 
@@ -41,7 +39,7 @@ function getAllItems() {
 
 function addItem() {
   window.location.href = "createinventory.html";
-  console.log("vdas");
+  console.log("Directing to Create Inventory page.");
 }
 
 function editItem(itemID) {
@@ -58,18 +56,18 @@ function filterItems(searchTerm) {
   const lowerCaseSearchTerm = searchTerm.toLowerCase();
 
   itemsRef.get()
-      .then((querySnapshot) => {
-          const itemList = document.getElementById("item-list");
-          itemList.innerHTML = ""; // Clear previous items
+    .then((querySnapshot) => {
+      const itemList = document.getElementById("item-list");
+      itemList.innerHTML = ""; // Clear previous items
 
-          querySnapshot.forEach((doc) => {
-              const item = doc.data();
-              const itemName = item.name.toLowerCase();
+      querySnapshot.forEach((doc) => {
+        const item = doc.data();
+        const itemName = item.name.toLowerCase();
 
-              if (itemName.includes(lowerCaseSearchTerm)) {
-                  const itemCard = document.createElement("div");
-                  itemCard.classList.add("card", "mb-3");
-                  itemCard.innerHTML = `
+        if (itemName.includes(lowerCaseSearchTerm)) {
+          const itemCard = document.createElement("div");
+          itemCard.classList.add("card", "mb-3");
+          itemCard.innerHTML = `
                       <div class="card-body">
                           <h5 class="card-title">${item.name}</h5>
                           <p class="card-text">Price: ${item.price}</p>
@@ -80,17 +78,17 @@ function filterItems(searchTerm) {
                           </div>
                       </div>
                   `;
-                  itemList.appendChild(itemCard);
-              }
-          });
-      })
-      .catch((error) => {
-          console.error("Error getting documents: ", error);
+          itemList.appendChild(itemCard);
+        }
       });
+    })
+    .catch((error) => {
+      console.error("Error getting documents: ", error);
+    });
 }
 
 // Event listener for search input changes
-document.getElementById("searchInput").addEventListener("input", function() {
+document.getElementById("searchInput").addEventListener("input", function () {
   const searchTerm = this.value.trim();
   filterItems(searchTerm);
 });

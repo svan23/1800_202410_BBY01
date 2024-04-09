@@ -44,3 +44,22 @@ div.card-body {
 .reset-button {
     width: 125px;
 }
+
+.list-group-item {
+    color: black;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+  }
+
+  .list-group-item h5,
+  .list-group-item small {
+    color: black;
+  }
+
+  .list-group-item-divider {
+    border-top: 1px solid #e9ecef;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
