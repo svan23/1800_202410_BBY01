@@ -4,6 +4,7 @@ var currentUser; // points to the document of the user who is logged in
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
+            // Get the document reference for the current user
             currentUser = db.collection("users").doc(user.uid);
             currentUser.get().then(userDoc => {
                 let userName = userDoc.data().name;
@@ -11,6 +12,7 @@ function populateUserInfo() {
                 let userPosition = userDoc.data().position;
                 let userLocationBased = userDoc.data().location;
 
+                // Populate the form fields with user information
                 if (userName != null) {
                     document.getElementById("nameInput").value = userName;
                 }
@@ -33,7 +35,7 @@ function populateUserInfo() {
 // Call the function to populate user info
 populateUserInfo();
 
-// Function to edit user info
+// Function to enable editing of user into
 function editUserInfo() {
     document.getElementById('personalInfoFields').disabled = false;
 }
@@ -45,6 +47,7 @@ function saveUserInfo() {
     userPosition = document.getElementById('positionInput').value;
     userLocationBased = document.getElementById('locationInput').value;
 
+    // Update the user document with new information
     currentUser.update({
         name: userName,
         details: userDetails,
@@ -64,5 +67,6 @@ function saveUserInfo() {
         });
     });
 
+    // Disable editing of form fields after saving
     document.getElementById('personalInfoFields').disabled = true;
 }

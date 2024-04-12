@@ -1,3 +1,4 @@
+// Function to get the display name of the currently logged in user and update the DOM
 function getNameFromAuth() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -13,12 +14,15 @@ function getNameFromAuth() {
 }
 getNameFromAuth();
 
+// Console logging the firebase object
 console.log(firebase);
 
-var template = document.getElementById("saleCardTemplate"); // Gets the reference to the template
-var container = document.getElementById("mock-sales-go-here"); // Gets the reference to the container where the cards will be displayed
-var salesRef = db.collection("inventory"); // Gets the reference to the Firestore collection
+// Getting references to the template, container, and Firestore collection
+var template = document.getElementById("saleCardTemplate");
+var container = document.getElementById("mock-sales-go-here");
+var salesRef = db.collection("inventory");
 
+// Function to dynamically display sale cards
 function displayCardsDynamically() {
     salesRef.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -52,6 +56,7 @@ function displayCardsDynamically() {
                 
                 addToSaleHistory(saleItem, 1, timestamp, userId, location);
 
+                // Update the Firestore document with new values
                 docRef.update({
                     quantity: newQuantityValue,
                     total_sold_today: newSaleValue,
@@ -76,9 +81,10 @@ function displayCardsDynamically() {
     });
 }
 
-
+// Call the function to display sale cards
 displayCardsDynamically();
 
+// Function to add a sale item to local storage
 function addToSaleHistory(itemName, quantity, timestamp, userId, location) {
     let saleItem = { name: itemName, quantity: quantity, timestamp: timestamp, userId: userId, location: location };
     let saleHistory = JSON.parse(localStorage.getItem("saleHistory")) || [];

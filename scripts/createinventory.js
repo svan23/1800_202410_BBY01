@@ -63,6 +63,7 @@ function writeItem() {
   //define a variable for the collection you want to create in Firestore to populate data
   const itemsRef = db.collection("inventory");
 
+  // Get item details from form inputs
   const itemName = document.getElementById("name").value;
   const itemPrice = document.getElementById("price").value;
   const itemCategory = document.getElementById("category").value;
@@ -70,6 +71,7 @@ function writeItem() {
   const itemDetails = document.getElementById("details").value;
   const itemLocation = document.getElementById("location").value;
 
+  // Add item details to Firestore
   itemsRef
     .add({
       category: itemCategory,
@@ -84,10 +86,11 @@ function writeItem() {
     .then((doc) => {
       console.log("1. Post document added!");
       console.log(doc.id);
-      uploadPic(doc.id);
+      uploadPic(doc.id); // Upload associated image to cloud storage
     });
 }
 
+// Function to cancel editing inventory and redirect to inventory page
 function cancel() {
   console.log("Cancel Edit Inventory.");
   window.location.href = "inventorypage.html";

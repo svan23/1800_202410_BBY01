@@ -26,3 +26,7 @@
   justify-content: flex-end;
   align-items: center;
 }
+
+button.btn.btn-primary {
+  margin-right: 12px;
+}

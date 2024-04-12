@@ -1,3 +1,4 @@
+// Function to extract a specific parameter value from the URL query string.
 function getUrlParameter(name) {
   name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
   var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -9,8 +10,7 @@ function getUrlParameter(name) {
 const saleID = getUrlParameter('saleID');
 console.log('saleID:', saleID);
 
-// Call the function to populate the fields with the item's data
-
+// Function to fetch item data from Firestore using the provided item ID and populate the form fields with the item's data.
 function getItemAndPopulateFields(itemId) {
   const itemsRef = db.collection("inventory").doc(itemId);
 
@@ -36,6 +36,7 @@ function getItemAndPopulateFields(itemId) {
 // Usage: Pass the document ID of the item you want to fetch and populate the fields with
 getItemAndPopulateFields(saleID);
 
+// Function to save changes made to an item's data.
 function saveChanges(itemId) {
   const itemsRef = db.collection("inventory").doc(itemId);
 
@@ -68,6 +69,7 @@ document.getElementById("save-button").addEventListener("click", () => {
   saveChanges(saleID);
 })
 
+// Function to delete an item from Firestore
 function deleteItem(itemId) {
   const itemsRef = db.collection("inventory").doc(itemId);
 
@@ -86,6 +88,7 @@ document.getElementById("delete-button").addEventListener("click", () => {
   }
 });
 
+// Function to cancel the edit operation and redirect to the inventory page.
 function cancel() {
   console.log("Cancel Edit Inventory.");
   window.location.href = "inventorypage.html";

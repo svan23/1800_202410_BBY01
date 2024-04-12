@@ -8,13 +8,13 @@ function getAllItems() {
       const inventory = allInventory.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       console.log("inventory", inventory);
 
-      // find the html list element
-      // append children of an item to it
-
+      // Initialize an empty string to store the HTML for each item
       let itemsHtml = "";
 
+      // Loop through each item in the inventory array
       inventory.forEach((item) => {
         console.log("item", item); // Add this line for debugging
+        // Construct the HTML for the item and append it to the itemsHtml string
         itemsHtml += `
         <div class="d-flex justify-content-between">
           <div class="mb-3">
@@ -32,22 +32,25 @@ function getAllItems() {
       </div>`;
         console.log(item.id);
       });
-
+      // Update the innerHTML of the 'item-list' element with the itemsHtml string
       document.getElementById("item-list").innerHTML = itemsHtml;
     });
 }
 
+// Function to navigate to the 'createinventory.html' page for adding a new item
 function addItem() {
   window.location.href = "createinventory.html";
   console.log("Directing to Create Inventory page.");
 }
 
+// Function to navigate to the 'editInventory.html' page for editing a specific item
 function editItem(itemID) {
   console.log(itemID);
   window.location.href = "editInventory.html?saleID=" + itemID;
   console.log("You're being directed to editing inventory page.");
 }
 
+// Call the getAllItems function to populate the inventory list on page load
 getAllItems();
 
 // Function to filter items based on search input
